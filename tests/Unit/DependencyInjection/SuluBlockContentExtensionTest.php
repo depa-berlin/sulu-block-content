@@ -29,6 +29,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
         self::assertArrayHasKey('bundle', $meta);
         self::assertArrayHasKey('package', $meta);
         self::assertArrayHasKey('blocks', $meta);
@@ -39,6 +40,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
         self::assertSame('SuluBlockContentBundle', $meta['bundle']);
     }
 
@@ -46,6 +48,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
         self::assertSame('depa-berlin/sulu-block-content', $meta['package']);
     }
 
@@ -53,6 +56,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
         self::assertCount(29, $meta['blocks']);
     }
 
@@ -60,6 +64,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         $expected = [
             'block--content-accordion',
@@ -78,6 +83,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-accordion', $meta['children']);
         self::assertContains(
@@ -90,6 +96,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-faq', $meta['children']);
         self::assertContains(
@@ -102,6 +109,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-list', $meta['children']);
         self::assertContains(
@@ -114,6 +122,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-button-grid', $meta['children']);
         self::assertContains(
@@ -126,6 +135,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-box', $meta['children']);
         self::assertGreaterThan(10, \count($meta['children']['block--content-box']));
@@ -135,6 +145,7 @@ class SuluBlockContentExtensionTest extends TestCase
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
 
         foreach ($meta['children'] as $parent => $children) {
             self::assertIsArray($children, "Children of '{$parent}' must be an array");
