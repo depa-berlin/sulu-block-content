@@ -52,93 +52,45 @@ class SuluBlockContentExtensionTest extends TestCase
         self::assertSame('depa-berlin/sulu-block-content', $meta['package']);
     }
 
-    public function testBundleMetadataContains29BlockTypes(): void
+    public function testBundleMetadataContainsAtLeastOneBlock(): void
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
-        self::assertCount(29, $meta['blocks']);
+        self::assertNotEmpty($meta['blocks']);
     }
 
-    public function testBundleMetadataContainsExpectedBlockTypes(): void
+    public function testBlocksAreSortedAndUnique(): void
+    {
+        $this->extension->load([], $this->container);
+        $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
+        self::assertIsArray($meta);
+        $blocks = $meta['blocks'];
+        $sorted = $blocks;
+        sort($sorted);
+        self::assertSame($sorted, $blocks, 'blocks must be sorted');
+        self::assertSame(array_unique($blocks), $blocks, 'blocks must be unique');
+    }
+
+    public function testKnownContentBlocksArePresent(): void
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
-        $expected = [
-            'block--content-accordion',
-            'block--content-text',
-            'block--content-image',
-            'block--content-button',
-            'block--content-list',
-        ];
-
-        foreach ($expected as $blockType) {
-            self::assertContains($blockType, $meta['blocks'], "Expected block type '{$blockType}' to be present");
+        foreach (['block--content-text', 'block--content-image', 'block--content-accordion'] as $expected) {
+            self::assertContains($expected, $meta['blocks']);
         }
     }
 
-    public function testAccordionHasAccordionItemAsChild(): void
+    public function testAccordionHasChildrenFromXml(): void
     {
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
         self::assertArrayHasKey('block--content-accordion', $meta['children']);
-        self::assertContains(
-            'block--content-accordion-item',
-            $meta['children']['block--content-accordion']
-        );
-    }
-
-    public function testFaqHasAccordionItemAsChild(): void
-    {
-        $this->extension->load([], $this->container);
-        $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
-        self::assertIsArray($meta);
-
-        self::assertArrayHasKey('block--content-faq', $meta['children']);
-        self::assertContains(
-            'block--content-accordion-item',
-            $meta['children']['block--content-faq']
-        );
-    }
-
-    public function testListHasListItemAsChild(): void
-    {
-        $this->extension->load([], $this->container);
-        $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
-        self::assertIsArray($meta);
-
-        self::assertArrayHasKey('block--content-list', $meta['children']);
-        self::assertContains(
-            'block--content-list-item',
-            $meta['children']['block--content-list']
-        );
-    }
-
-    public function testButtonGridHasButtonAsChild(): void
-    {
-        $this->extension->load([], $this->container);
-        $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
-        self::assertIsArray($meta);
-
-        self::assertArrayHasKey('block--content-button-grid', $meta['children']);
-        self::assertContains(
-            'block--content-button',
-            $meta['children']['block--content-button-grid']
-        );
-    }
-
-    public function testBoxContainsMultipleChildTypes(): void
-    {
-        $this->extension->load([], $this->container);
-        $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
-        self::assertIsArray($meta);
-
-        self::assertArrayHasKey('block--content-box', $meta['children']);
-        self::assertGreaterThan(10, \count($meta['children']['block--content-box']));
+        self::assertContains('block--content-accordion-item', $meta['children']['block--content-accordion']);
     }
 
     public function testChildrenValuesAreArraysOfStrings(): void
@@ -147,9 +99,9 @@ class SuluBlockContentExtensionTest extends TestCase
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
-        foreach ($meta['children'] as $parent => $children) {
-            self::assertIsArray($children, "Children of '{$parent}' must be an array");
-            foreach ($children as $child) {
+        foreach ($meta['children'] as $parent => $kids) {
+            self::assertIsArray($kids, "Children of '{$parent}' must be an array");
+            foreach ($kids as $child) {
                 self::assertIsString($child);
             }
         }

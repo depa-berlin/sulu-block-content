@@ -10,54 +10,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
 class SuluBlockContentExtension extends Extension implements PrependExtensionInterface
 {
-    private const BLOCKS = [
-        'block--content-accordion', 'block--content-accordion-item',
-        'block--content-account-address', 'block--content-action-button',
-        'block--content-asset-container', 'block--content-box',
-        'block--content-button', 'block--content-button-content',
-        'block--content-button-grid', 'block--content-button-multiline',
-        'block--content-col-headline', 'block--content-col-lead',
-        'block--content-col-lead-html', 'block--content-faq',
-        'block--content-form', 'block--content-headline',
-        'block--content-html', 'block--content-html-template',
-        'block--content-image', 'block--content-inline-svg',
-        'block--content-lead', 'block--content-lead-html',
-        'block--content-list', 'block--content-list-item',
-        'block--content-snippet', 'block--content-text',
-        'block--content-title', 'block--content-title-icon',
-        'block--content-video',
-    ];
-
-    private const CHILDREN = [
-        'block--content-accordion'      => ['block--content-accordion-item'],
-        'block--content-faq'            => ['block--content-accordion-item'],
-        'block--content-list'           => ['block--content-list-item'],
-        'block--content-button-grid'    => ['block--content-button'],
-        'block--content-button-content' => [
-            'block--content-text', 'block--content-html', 'block--content-image',
-        ],
-        'block--content-box'            => [
-            'block--content-text', 'block--content-html',
-            'block--content-lead', 'block--content-lead-html',
-            'block--content-image', 'block--content-inline-svg',
-            'block--content-video', 'block--content-button',
-            'block--content-button-content', 'block--content-button-multiline',
-            'block--content-button-grid', 'block--content-col-lead',
-            'block--content-col-lead-html', 'block--content-col-headline',
-            'block--content-headline', 'block--content-title',
-            'block--content-faq', 'block--content-accordion',
-            'block--content-list', 'block--content-form',
-        ],
-        'block--content-form'           => [
-            'block--content-text', 'block--content-html',
-            'block--content-lead', 'block--content-lead-html',
-            'block--content-image', 'block--content-button',
-            'block--content-button-content', 'block--content-button-multiline',
-            'block--content-button-grid', 'block--content-col-lead',
-            'block--content-col-lead-html', 'block--content-headline',
-            'block--content-title', 'block--content-list',
-        ],
-    ];
+    use BlockMetadataLoaderTrait;
 
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -69,11 +22,13 @@ class SuluBlockContentExtension extends Extension implements PrependExtensionInt
             ]);
         }
 
+        $metadata = $this->loadMetadataFromXml(__DIR__ . '/../../Resources/config/blocks');
+
         $container->setParameter('sulu_block_content.bundle_metadata', [
             'bundle'   => 'SuluBlockContentBundle',
             'package'  => 'depa-berlin/sulu-block-content',
-            'blocks'   => self::BLOCKS,
-            'children' => self::CHILDREN,
+            'blocks'   => $metadata['blocks'],
+            'children' => $metadata['children'],
         ]);
     }
 
