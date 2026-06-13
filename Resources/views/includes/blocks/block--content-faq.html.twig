@@ -1,0 +1,30 @@
+Da{% extends 'includes/blocks/block--content-accordion.html.twig' %}
+
+{% block content_accordion %}
+    <div id="{{ resolved_id }}" class="block--content-faq{{ layout_class }}  {{ content.attr_class }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% block content_accordion_inner %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+        {% for faq in content.blocks %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.header|json_encode|slice(1, -1)|raw }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.body|json_encode|slice(1, -1)|raw }}"
+      }
+    }{% if not loop.last %}{% endif %}
+        {% endfor %}
+        ]
+      }
+    </script>
+{% endblock %}

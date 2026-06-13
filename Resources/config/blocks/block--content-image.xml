@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-image</key>
+    <meta>
+        <title lang="en">Image</title>
+        <title lang="de">Bild</title>
+    </meta>
+    <properties>
+        <property name="image" type="single_media_selection">
+            <params>
+                <param name="types" value="image,video"/>
+                <param name="displayOptions" type="collection">
+                    <param name="leftTop" value="true"/>
+                    <param name="top" value="true"/>
+                    <param name="rightTop" value="true"/>
+                    <param name="left" value="true"/>
+                    <param name="middle" value="false"/>
+                    <param name="right" value="true"/>
+                    <param name="leftBottom" value="true"/>
+                    <param name="bottom" value="true"/>
+                    <param name="rightBottom" value="true"/>
+                </param>
+
+                <param name="defaultDisplayOption" value="left"/>
+            </params>
+        </property>
+        <section name="config_1">
+            <meta>
+                <title lang="en">Presentation</title>
+                <title lang="de">Darstellung</title>
+            </meta>
+
+            <properties>
+                <property name="element" type="single_select">
+                    <meta>
+                        <title lang="en">Element</title>
+                        <title lang="de">Element</title>
+                    </meta>
+
+                    <params>
+                        <param name="default_value" value="picture"/>
+
+                        <param name="values" type="collection">
+                            <param name="picture">
+                                <meta>
+                                    <title lang="en">picture</title>
+                                    <title lang="de">picture</title>
+                                </meta>
+                            </param>
+
+                            <param name="img">
+                                <meta>
+                                    <title lang="en">img</title>
+                                    <title lang="de">img</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="size" type="single_select" visibleCondition="__parent.element=='picture'">
+                    <meta>
+                        <title lang="en">Image size</title>
+                        <title lang="de">Bildgröße</title>
+                    </meta>
+
+                    <params>
+                        <param name="default_value" value="standard"/>
+
+                        <param name="values" type="collection">
+                            <param name="standard">
+                                <meta>
+                                    <title lang="en">normal size</title>
+                                    <title lang="de">normale Größe</title>
+                                </meta>
+                            </param>
+
+                            <param name="large">
+                                <meta>
+                                    <title lang="en">larger size</title>
+                                    <title lang="de">größere Größe</title>
+                                </meta>
+                            </param>
+                            <param name="full">
+                                <meta>
+                                    <title lang="en">full size</title>
+                                    <title lang="de">volle Größe</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="enable_x2" type="checkbox">
+                    <meta>
+                        <title lang="en">Enable Retina/2x images</title>
+                        <title lang="de">Retina/2x Bilder aktivieren</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="false"/>
+                    </params>
+                </property>
+            </properties>
+        </section>
+        <xi:include href="../_fragments/config_image.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+        <section name="config_2">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+
+            <properties>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+
+            </properties>
+        </section>
+
+    </properties>
+</template>

@@ -1,0 +1,20 @@
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-snippet</key>
+    <meta>
+        <title lang="en">Snippet Content Block</title>
+        <title lang="de">Snippet Content Block</title>
+    </meta>
+    <properties>
+        <property name="snippets" type="single_snippet_selection">
+            <meta>
+                <title lang="de">Schnipsel</title>
+                <title lang="en">Snippets</title>
+            </meta>
+            <params>
+                <param name="types" value="content"/>
+            </params>
+        </property>
+    </properties>
+</template>

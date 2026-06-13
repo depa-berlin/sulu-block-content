@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-button</key>
+    <meta>
+        <title lang="en">Link as button</title>
+        <title lang="de">Link als Button</title>
+    </meta>
+    <properties>
+        <property name="button_text" type="text_line">
+            <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+            <meta>
+                <title lang="en">Button Text</title>
+                <title lang="de">Button Text</title>
+            </meta>
+        </property>
+        <property name="link" type="link">
+            <meta>
+                <title lang="en">Link</title>
+                <title lang="de">Link</title>
+            </meta>
+            <params>
+                <param name="enable_anchor" value="true"/>
+                <param name="enable_attributes" value="true"/>
+                <param name="types" type="collection">
+                    <param name="page"/>
+                    <param name="external"/>
+                    <param name="media"/>
+                </param>
+            </params>
+        </property>
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+                <property name="icon" type="checkbox">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Icon representation</title>
+                        <title lang="de">Icon Darstellung</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="false"/>
+                    </params>
+                </property>
+            </properties>
+        </section>
+        <section name="accessibility">
+            <meta>
+                <title lang="en">Accessibility</title>
+                <title lang="de">Barrierefreiheit</title>
+            </meta>
+
+            <properties>
+                <block name="aria_blocks" default-type="aria-attr--aria-label" minOccurs="0">
+
+                    <params>
+                        <param name="add_button_text">
+                            <meta>
+                                <title lang="en">Add ARIA Values </title>
+                                <title lang="de">ARIA-Werte hinzufügen</title>
+                            </meta>
+                        </param>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="aria-attr--aria-label"/>
+                    </types>
+                </block>
+
+            </properties>
+        </section>
+    </properties>
+</template>

@@ -1,0 +1,23 @@
+{% block content_account_address %}
+    {% set block_id = content._id|default %}
+    <div class="block--content-account-address" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% if account %}
+            {% if account.accountAddresses is not empty and account.accountAddresses|length > 0 %}
+                {% set address = account.accountAddresses|first.address %}
+                <p>
+                {{ account.name }}<br>
+                {{ address.street ~ ' ' ~ address.number }}<br>
+                {{ address.zip ~ ' ' ~ address.city }}<br>
+                {{ country(address.countryCode) }}<br>
+                    Tel: <a href="tel:{{ account.mainPhone }}">{{ account.mainPhone }}</a><br>
+                    Mail: {{ obfuscate(account.mainEmail) }}
+                </p>
+            {% else %}
+                <p>{{ account.name }}<br>
+                    {{ 'block.account_address.no_address'|trans }}</p>
+            {% endif %}
+        {% else %}
+            <p>{{ 'block.account_address.no_organisation'|trans }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

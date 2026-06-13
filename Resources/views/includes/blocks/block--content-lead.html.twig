@@ -1,0 +1,8 @@
+{% block content_lead %}
+    {% set block_id = content._id|default %}
+    {% if content.text|default %}
+        <div class="block--content-lead {{ content.attr_class|default }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+            {{ content.text|nl2br }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-video</key>
+    <meta>
+        <title lang="en">Video</title>
+        <title lang="de">Video</title>
+    </meta>
+    <properties>
+        <property name="video" type="single_media_selection">
+            <meta>
+                <title lang="en">Video</title>
+                <title lang="de">Video</title>
+            </meta>
+            <params>
+                <param name="types" value="video"/>
+            </params>
+        </property>
+        <property name="image" type="single_media_selection">
+            <meta>
+                <title lang="en">Image</title>
+                <title lang="de">Bild</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <property name="responsive_mode" type="single_select" colspan="12">
+                    <meta>
+                        <title lang="en">Responsive Mode</title>
+                        <title lang="de">Responsive Mode</title>
+                        <info_text lang="en">Responsive mode will make the player's UI customize itself based on the size of the player.</info_text>
+                        <info_text lang="de">Im Responsive-Modus passt sich die Benutzeroberfläche des Players an die Größe des Players an.</info_text>
+                    </meta>
+                    <params>
+                        <param name="default_value" value='1'/>
+
+                        <param name="values" type="collection">
+                            <param name='1'>
+                                <meta>
+                                    <title lang="en">enabled</title>
+                                    <title lang="de">aktiviert</title>
+                                </meta>
+                            </param>
+
+                            <param name='0'>
+                                <meta>
+                                    <title lang="en">disabled</title>
+                                    <title lang="de">deaktiviert</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="fluid_mode" type="single_select" colspan="12">
+                    <meta>
+                        <title lang="en">Fluid Mode</title>
+                        <title lang="de">Fluid Modus</title>
+                        <info_text lang="en">Video.js has a fluid mode that keeps the player sized to a particular aspect ratio.</info_text>
+                        <info_text lang="de">Video.js verfügt über einen Fluidmodus, der die Größe des Players auf ein bestimmtes Seitenverhältnis einstellt.</info_text>
+                    </meta>
+                    <params>
+                        <param name="default_value" value='1'/>
+
+                        <param name="values" type="collection">
+                            <param name='1'>
+                                <meta>
+                                    <title lang="en">enabled</title>
+                                    <title lang="de">aktiviert</title>
+                                </meta>
+                            </param>
+
+                            <param name='0'>
+                                <meta>
+                                    <title lang="en">disabled</title>
+                                    <title lang="de">deaktiviert</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="autoplay" type="single_select" colspan="6">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Autoplay</title>
+                        <title lang="de">Autoplay</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="0"/>
+
+                        <param name="values" type="collection">
+                            <param name="1">
+                                <meta>
+                                    <title lang="en">enabled</title>
+                                    <title lang="de">aktiviert</title>
+                                </meta>
+                            </param>
+
+                            <param name="0">
+                                <meta>
+                                    <title lang="en">disabled</title>
+                                    <title lang="de">deaktiviert</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="controls" type="single_select" colspan="6">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Controls</title>
+                        <title lang="de">Controls</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="1"/>
+
+                        <param name="values" type="collection">
+                            <param name="1">
+                                <meta>
+                                    <title lang="en">enabled</title>
+                                    <title lang="de">aktiviert</title>
+                                </meta>
+                            </param>
+
+                            <param name="0">
+                                <meta>
+                                    <title lang="en">disabled</title>
+                                    <title lang="de">deaktiviert</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</template>

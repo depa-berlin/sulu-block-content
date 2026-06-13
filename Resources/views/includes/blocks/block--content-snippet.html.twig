@@ -1,0 +1,16 @@
+{% block content_snippet %}
+    {% set snippet = content.snippets %}
+    {% set snippetView = view.snippets %}
+    {% if snippet is not empty %}
+        {% if snippet.blocks|default([]) %}
+            {% for block in snippet.blocks %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: (snippetView.blocks is defined and snippetView.blocks[loop.index0] is defined)
+                        ? snippetView.blocks[loop.index0]
+                        : null,
+                } %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

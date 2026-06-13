@@ -1,0 +1,52 @@
+{% set image = sulu_resolve_media(content.image, app.request.locale) %}
+{% set block_id = content._id|default %}
+{% set loading = content.loading %}
+{% set fetchpriority = null %}
+{% if content.fetchpriority_high == true %}
+    {% set loading = "eager" %}
+    {% set fetchpriority = "high" %}
+{% endif %}
+{% if image|default %}
+    <div class="block--content-image position-{{ view.image.displayOption|default('') }} {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+
+        {% if content.element == "picture" %}
+            <picture>
+                {% if content.size == "full" %}
+                    <source media="(min-width: 1400px)"
+                            srcset="{{ image.thumbnails['content-image-full-1620'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-full-1620-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 1200px)"
+                            srcset="{{ image.thumbnails['content-image-full-1400'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-full-1400-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 992px)"
+                            srcset="{{ image.thumbnails['content-image-full-1200'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-full-1200-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 768px)"
+                            srcset="{{ image.thumbnails['content-image-large'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-large-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 576px)"
+                            srcset="{{ image.thumbnails['content-image'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 414px)"
+                            srcset="{{ image.thumbnails['content-image-mobile'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-mobile-x2'] }} 2x{% endif %}">
+                {% endif %}
+                {% if content.size == "large" %}
+                    <source media="(min-width: 576px)"
+                            srcset="{{ image.thumbnails['content-image-large'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-large-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 414px)"
+                            srcset="{{ image.thumbnails['content-image-mobile'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-mobile-x2'] }} 2x{% endif %}">
+                {% endif %}
+                {% if content.size == "standard" %}
+                    <source media="(min-width: 576px)"
+                            srcset="{{ image.thumbnails['content-image'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-x2'] }} 2x{% endif %}">
+                    <source media="(min-width: 414px)"
+                            srcset="{{ image.thumbnails['content-image-mobile'] }}{% if content.enable_x2 %}, {{ image.thumbnails['content-image-mobile-x2'] }} 2x{% endif %}">
+                {% endif %}
+                <img src="{{ image.thumbnails['content-image-mobile-small'] }}" class="img-fluid"
+                     alt="{{ content.is_decorative ? '' : image.title }}" {% if image.description %}title="{{ image.description }}"{% endif %}
+                     loading="{{ loading }}" {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"
+                     {% endif %}width="{{ image.properties.width }}" height="{{ image.properties.height }}">
+            </picture>
+        {% else %}
+            <img src="{{ image.thumbnails['content-image'] }}" class="img-fluid"
+                 alt="{{ content.is_decorative ? '' : image.title }}" {% if image.description %}title="{{ image.description }}"{% endif %}
+                 loading="{{ loading }}" {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"
+                 {% endif %}width="{{ image.properties.width }}" height="{{ image.properties.height }}">
+        {% endif %}
+    </div>
+{% endif %}

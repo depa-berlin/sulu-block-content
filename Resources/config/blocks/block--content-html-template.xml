@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-html-template</key>
+    <meta>
+        <title lang="en">HTML with Template Variables</title>
+        <title lang="de">Html mit Template-Variablen</title>
+    </meta>
+    <properties>
+        <section name="content">
+            <meta>
+                <title lang="en">Content</title>
+                <title lang="de">Inhalt</title>
+            </meta>
+            <properties>
+                <property name="html" type="text_editor">
+                    <meta>
+                        <info_text lang="en">You use a defined template variable in the following format: {{ VARIABLE }}</info_text>
+                        <info_text lang="de">Eine definierte Templatevariable verwenden Sie in der nachfolgenden Schreibweise: {{ VARIABLE }}</info_text>
+                    </meta>
+                </property>
+                <block name="template_vars" default-type="template-var" minOccurs="0">
+
+                    <params>
+                        <param name="add_button_text">
+                            <meta>
+                                <title lang="en">Add template var</title>
+                                <title lang="de">Template-Variable hinzufügen</title>
+                            </meta>
+                        </param>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="template-var"/>
+                    </types>
+                </block>
+            </properties>
+        </section>
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</template>

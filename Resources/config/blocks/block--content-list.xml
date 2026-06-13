@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-list</key>
+    <meta>
+        <title lang="en">List</title>
+        <title lang="de">List</title>
+    </meta>
+    <properties>
+        <section name="blocks">
+            <meta>
+                <title lang="en">List items</title>
+                <title lang="de">List Items</title>
+            </meta>
+            <properties>
+                <block name="blocks" default-type="block--content-list-item" minOccurs="0">
+
+                    <params>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--content-list-item"/>
+                    </types>
+                </block>
+
+            </properties>
+
+        </section>
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <property name="list_typ" type="single_select" colspan="4">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Darstellungstyp</title>
+                        <title lang="de">Darstellungstyp</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value=""/>
+
+                        <param name="values" type="collection">
+                            <param name="">
+                                <meta>
+                                    <title lang="en">Standard</title>
+                                    <title lang="de">Standard</title>
+                                </meta>
+
+                            </param>
+                                 <param name="list-inline">
+                                <meta>
+                                    <title lang="en">Inline</title>
+                                    <title lang="de">Inline</title>
+                                </meta>
+
+                            </param>
+                            <param name="list-unstyled">
+                                <meta>
+                                    <title lang="en">Unstyled</title>
+                                    <title lang="de">Unstyled</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</template>

@@ -1,0 +1,37 @@
+{% set block_id = content._id|default %}
+{% set video = sulu_resolve_media(content.video, app.request.locale) %}
+{% set image = sulu_resolve_media(content.image, app.request.locale) %}
+{% set fluid_mode = content.fluid_mode == 1 ? 'true' : 'false' %}
+{% set responsive_mode = content.responsive_mode  == 1 ? 'true' : 'false' %}
+{% set autoplay = content.autoplay  == 1 ? 'true' : 'false' %}
+{% set controls = content.controls  == 1 ? 'true' : 'false' %}
+{% if video|default %}
+    {% do asset_collector.addAsset('/website/styles/block--content-video.css', {'media': 'screen'}, true) %}
+    {% do asset_collector.addAsset('/website/js/block--content-video.js', {}, true) %}
+
+    {# {% do asset_collector.addAsset('/js/synchron.js') %} {# Läuft ohne async/defer #}
+
+    {#  {% do asset_collector.addAsset('/js/mein-script.js', {'defer': true}) %} #}
+    {#  {% do asset_collector.addAsset('/js/synchron.js') %} {# Läuft ohne async/defer und kommt in `<head>` #}
+
+
+
+    <div class="block--content-video {{ content.attr_class }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        <video class="video-js" {% if image|default %}poster="{{ image.url }}"{% endif %}
+               data-setup='{"controls": {{ controls }}, "autoplay": {{ autoplay }}, "preload": "auto", "fluid": {{ fluid_mode }}, "responsive": {{ responsive_mode }}}'
+               style="width: 100%;">
+            <source src="{{ video.url }}" type="{{ video.mimeType }}"/>
+            {#  <source src="video-480p.mp4" type="video/mp4" data-res="480">
+        <source src="video-720p.mp4" type="video/mp4" data-res="720">
+        <source src="video-1080p.mp4" type="video/mp4" data-res="1080"> #}
+
+
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">supports
+                    HTML5 video</a>
+            </p>
+        </video>
+    </div>
+{% endif %}

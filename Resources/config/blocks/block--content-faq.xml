@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-faq</key>
+    <meta>
+        <title lang="en">FAQ</title>
+        <title lang="de">FAQ</title>
+    </meta>
+    <properties>
+
+        <section name="blocks">
+            <meta>
+                <title lang="en">FAQ items</title>
+                <title lang="de">FAQ Eintrag</title>
+            </meta>
+            <properties>
+                <block name="blocks" default-type="block--content-accordion-item" minOccurs="1">
+                    <params>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--content-accordion-item"/>
+                    </types>
+                </block>
+            </properties>
+
+        </section>
+        <section name="config">
+            <meta>
+                <title lang="en">Settings FAQ</title>
+                <title lang="de">Einstellungen FAQ</title>
+            </meta>
+            <properties>
+                <property name="layout" type="single_select">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Layout</title>
+                        <title lang="de">Layout</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="standard"/>
+
+                        <param name="values" type="collection">
+                            <param name="standard">
+                                <meta>
+                                    <title lang="en">Standard-Layout</title>
+                                    <title lang="de">Standard-Layout</title>
+                                </meta>
+
+                            </param>
+                            <param name="item-numbered">
+                                <meta>
+                                    <title lang="en">Numbered items</title>
+                                    <title lang="de">Nummierierte Items</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_id.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+                <property name="first_item_open" type="checkbox">
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="true"/>
+                        <param name="label">
+                            <meta>
+                                <title lang="de">Beim Laden der Seite ist das erste FAQ-Element geöffnet.</title>
+                                <title lang="en">When the page loads, the first FAQ item is open.</title>
+                            </meta>
+                        </param>
+                    </params>
+                </property>
+                <property name="always_open" type="checkbox">
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="false"/>
+                        <param name="label">
+                            <meta>
+                                <title lang="de">Geöffneter FAQ-Inhalt bleibt offen</title>
+                                <title lang="en">Opened FAQ content remains open</title>
+                                <info_text lang="en">Opened FAQ content (accordion elements) remains open when another
+                                    element is opened.
+                                </info_text>
+                                <info_text lang="de">Ein geöffneter FAQ-Inhalt (Akkordeonelemente) bleibt geöffnet, wenn
+                                    ein anderes Element geöffnet wird.
+                                </info_text>
+                            </meta>
+                        </param>
+                    </params>
+                </property>
+
+
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+        <section name="config_item">
+            <meta>
+                <title lang="en">Settings FAQ entry</title>
+                <title lang="de">Einstellungen FAQ-Eintrag</title>
+            </meta>
+            <properties>
+                <property name="element" type="single_select">
+                    <meta>
+                        <title lang="en">HTML-Element</title>
+                        <title lang="de">HTML-Element (Frage)</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="h3"/>
+
+                        <param name="values" type="collection">
+                            <param name="h2">
+                                <meta>
+                                    <title lang="en">H2</title>
+                                    <title lang="de">H2</title>
+                                </meta>
+
+                            </param>
+                            <param name="h3">
+                                <meta>
+                                    <title lang="en">H3</title>
+                                    <title lang="de">H3</title>
+                                </meta>
+                            </param>
+                            <param name="h4">
+                                <meta>
+                                    <title lang="en">H4</title>
+                                    <title lang="de">H4</title>
+                                </meta>
+                            </param>
+                            <param name="p">
+                                <meta>
+                                    <title lang="en">P</title>
+                                    <title lang="de">Absatz (p)</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</template>

@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-title</key>
+    <meta>
+        <title lang="en">Headline</title>
+        <title lang="de">Überschrift</title>
+    </meta>
+    <properties>
+        <property name="text" type="text_area">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Überschrift</title>
+            </meta>
+        </property>
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <property name="element" type="single_select" colspan="4">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">HTML-Element</title>
+                        <title lang="de">HTML-Element</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="h2"/>
+
+                        <param name="values" type="collection">
+                            <param name="h1">
+                                <meta>
+                                    <title lang="en">H1</title>
+                                    <title lang="de">H1</title>
+                                </meta>
+
+                            </param>
+                            <param name="h2">
+                                <meta>
+                                    <title lang="en">H2</title>
+                                    <title lang="de">H2</title>
+                                </meta>
+
+                            </param>
+                            <param name="h3">
+                                <meta>
+                                    <title lang="en">H3</title>
+                                    <title lang="de">H3</title>
+                                </meta>
+
+                            </param>
+                            <param name="h4">
+                                <meta>
+                                    <title lang="en">H4</title>
+                                    <title lang="de">H4</title>
+                                </meta>
+
+                            </param>
+                            <param name="p">
+                                <meta>
+                                    <title lang="en">P</title>
+                                    <title lang="de">P</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+        <section name="accessibility">
+            <meta>
+                <title lang="en">Accessibility</title>
+                <title lang="de">Barrierefreiheit</title>
+            </meta>
+
+            <properties>
+                <block name="aria_blocks" default-type="aria-attr--aria-label" minOccurs="0">
+
+                    <params>
+                        <param name="add_button_text">
+                            <meta>
+                                <title lang="en">Add ARIA Values </title>
+                                <title lang="de">ARIA-Werte hinzufügen</title>
+                            </meta>
+                        </param>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="aria-block--heading"/>
+                        <type ref="aria-attr--aria-label"/>
+                    </types>
+                </block>
+
+            </properties>
+        </section>
+    </properties>
+</template>

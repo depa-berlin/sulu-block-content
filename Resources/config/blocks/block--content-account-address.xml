@@ -1,0 +1,20 @@
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-account-address</key>
+    <meta>
+        <title lang="en">Address from account</title>
+        <title lang="de">Adresse vom Account</title>
+    </meta>
+    <properties>
+        <property name="account" type="single_account_selection" mandatory="true">
+            <meta>
+                <title lang="en">Organization</title>
+                <info_text lang="en">The selected organization will be used for displaying contact informations.</info_text>
+
+                <title lang="de">Organisation</title>
+                <info_text lang="de">Die ausgewählte Organisation zur Darstellung von Kontaktinformationen.</info_text>
+            </meta>
+        </property>
+    </properties>
+</template>

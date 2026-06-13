@@ -1,0 +1,15 @@
+{% block content_html_template %}
+    {% set block_id = content._id|default %}
+    {# template_vars values are editor-supplied and substituted into editor-supplied HTML — both sides are trusted CMS-admin input #}
+    <div class="block--content-html-template {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% if content.html|default %}
+            {% set template = content.html %}
+            {% for var in content.template_vars|default([]) %}
+                {% set template = template|replace({
+                    ('{{ ' ~ var.variable ~ ' }}'): var.content
+                }) %}
+            {% endfor %}
+            {{ template|raw }}
+        {% endif %}
+    </div>
+{% endblock %}

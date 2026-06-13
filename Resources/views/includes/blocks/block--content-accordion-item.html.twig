@@ -1,0 +1,29 @@
+{% block content_faq_item %}
+    {% set block_id = content._id|default %}
+    {% set attr_id = accordion_attr_id|default('')|trim %}
+    {% set layout = accordion_layout|default('standard') %}
+    {% set heading_id = 'heading-' ~ block_id %}
+    {% set collapse_id = 'collapse-' ~ block_id %}
+    {% set is_open = (first_item_open|default(false)) and loop.first %}
+    {% set accordion_element = accordion_element|default('h3') %}
+
+<div class="block--content-accordion-item {{ content.attr_class|default }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+    <{{ accordion_element }} class="accordion-header" id="{{ heading_id }}">
+    <button class="accordion-button {{ is_open ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse"
+            data-bs-target="#{{ collapse_id }}" aria-expanded="{{ is_open ? 'true' : 'false' }}"
+            aria-controls="{{ collapse_id }}">
+        {% if layout == 'item-numbered' %}
+            <span class="accordion-item-number">{{ loop.index }}</span>
+        {% endif %}
+        <span class="accordion-title">{{ content.header|default }}</span>
+    </button>
+    </{{ accordion_element }}>
+    <div id="{{ collapse_id }}" class="accordion-collapse collapse{{ is_open ? ' show' : '' }}"
+         aria-labelledby="{{ heading_id }}"
+         {% if attr_id is not empty and not (accordion_always_open|default(false)) %}data-bs-parent="#{{ attr_id }}"{% endif %}>
+        <div class="accordion-body">
+            {% if content.body|default %}{{ content.body|raw }}{% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

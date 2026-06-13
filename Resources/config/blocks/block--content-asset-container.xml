@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-asset-container</key>
+    <meta>
+        <title lang="en">Asset Container</title>
+        <title lang="de">Asset Container</title>
+    </meta>
+
+    <properties>
+
+                <property name="asset_typ" type="single_select" colspan="6">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Darstellung</title>
+                        <title lang="de">Darstellung</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="three-asset"/>
+
+                        <param name="values" type="collection">
+
+                            <param name="one-asset">
+                                <meta>
+                                    <title lang="en">1 Image</title>
+                                    <title lang="de">1 Bild</title>
+                                </meta>
+                            </param>
+                            <param name="two-asset">
+                                <meta>
+                                    <title lang="en">2 Images</title>
+                                    <title lang="de">2 Bilder</title>
+                                </meta>
+                            </param>
+                            <param name="three-asset">
+                                <meta>
+                                    <title lang="en">3 Images</title>
+                                    <title lang="de">3 Bilder</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+
+
+        <section name="config">
+            <meta>
+                <title lang="en">Images</title>
+                <title lang="de">Bilder</title>
+            </meta>
+            <properties>
+                <property name="image1" type="single_media_selection" visibleCondition="__parent.asset_typ=='one-asset' || __parent.asset_typ=='two-asset' || __parent.asset_typ=='three-asset'">
+                    <params>
+                        <param name="types" value="image,video"/>
+                    </params>
+                </property>
+                <property name="image2" type="single_media_selection" visibleCondition="__parent.asset_typ=='two-asset' || __parent.asset_typ=='three-asset'">
+                    <params>
+                        <param name="types" value="image,video"/>
+
+                    </params>
+                </property>
+                <property name="image3" type="single_media_selection" visibleCondition="__parent.asset_typ=='three-asset'">
+                    <params>
+                        <param name="types" value="image,video"/>
+
+                    </params>
+                </property>
+
+                <section name="config">
+                    <meta>
+                        <title lang="en">Config</title>
+                        <title lang="de">Einstellungen</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+                        <property name="animation" type="checkbox">
+                            <meta>
+                                <title lang="en">Show animation</title>
+                                <title lang="de">Zeige Animation</title>
+                            </meta>
+                            <params>
+                                <param name="type" value="toggler"/>
+                                <param name="default_value" value="false"/>
+                            </params>
+                        </property>
+                    </properties>
+                </section>
+            </properties>
+        </section>
+    </properties>
+</template>

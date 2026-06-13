@@ -1,0 +1,14 @@
+{% block content_button %}
+    {% set block_id = content._id|default %}
+    {% if content.link|default %}
+        {% set provider_class = (content.icon == true and view.link is defined) ? 'provider-' ~ view.link.provider : '' %}
+        <a class="block--content-button {{ provider_class }} {{ content.attr_class|default }}"
+           href="{{ content.link }}"
+           target="{{ view.link.target|default('_self') }}"
+           data-cms-block-id="{{ block_id }}"
+            {{ include('includes/_partials/aria_attributes.html.twig', {
+                aria_blocks: content.aria_blocks|default([])
+            }) }}
+        {{ sulu_block_preview(content) }}>{{ content.button_text|default|nl2br }}</a>
+    {% endif %}
+{% endblock %}

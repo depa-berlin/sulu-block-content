@@ -1,0 +1,8 @@
+{% block content_html %}
+    {% set block_id = content._id|default %}
+    {% if content.text|default %}
+        <div class="block--content-html {{ content.attr_class|default }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+            {{ content.text|raw }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% set block_id = content._id|default %}
+{% set image1 = sulu_resolve_media(content.image1,  app.request.locale) %}
+{% set image2 = sulu_resolve_media(content.image2,  app.request.locale) %}
+{% set image3 = sulu_resolve_media(content.image3,  app.request.locale) %}
+
+<div
+    class="block--content-asset-container {{ content.asset_typ }}{% if content.animation %} js-animation-scrollContainer{% endif %} {{ content.attr_class }}"
+    data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+    <div class="asset-one">
+        {% if image1|default %}
+            {% if image1.credits|default %}
+                <figure>
+            {% endif %}
+            <picture>
+                <source srcset="{{ image1.thumbnails['asset-350'] }}" media="(min-width: 1536px)">
+                <source srcset="{{ image1.thumbnails['asset-300'] }}" media="(min-width: 1280px)">
+                <source srcset="{{ image1.thumbnails['asset-300'] }}" media="(min-width: 992px)">
+                <source srcset="{{ image1.thumbnails['asset-300'] }}" media="(min-width: 768px)">
+                <source srcset="{{ image1.thumbnails['asset-350'] }}" media="(min-width: 480px)">
+                <img src="{{ image1.thumbnails['asset-204'] }}" alt="" width="512" height="724" loading="lazy">
+            </picture>
+            {% if image1.credits|default %}
+                <figcaption>{{ image1.credits }}</figcaption>
+                </figure>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% if  content.asset_typ == 'two-asset'  or content.asset_typ == 'three-asset' %}
+        <div class="asset-two">
+            {% if image2|default %}
+                {% if image2.credits|default %}
+                    <figure>
+                {% endif %}
+                <picture>
+                    <source srcset="{{ image2.thumbnails['asset-500'] }}" media="(min-width: 1536px)">
+                    <source srcset="{{ image2.thumbnails['asset-400'] }}" media="(min-width: 1280px)">
+                    <source srcset="{{ image2.thumbnails['asset-400'] }}" media="(min-width: 992px)">
+                    <source srcset="{{ image2.thumbnails['asset-168'] }}" media="(min-width: 768px)">
+                    <source srcset="{{ image2.thumbnails['asset-350'] }}" media="(min-width: 480px)">
+                    <img src="{{ image2.thumbnails['asset-204'] }}" alt="" width="510" height="375" loading="lazy">
+                </picture>
+                {% if image2.credits|default %}
+                    <figcaption>{{ image2.credits }}</figcaption>
+                    </figure>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if content.asset_typ == 'three-asset' %}
+    <div class="asset-three">
+        {% if image3|default %}
+            {% if image3.credits|default %}
+                <figure>
+            {% endif %}
+            <picture>
+                <source srcset="{{ image3.thumbnails['asset-655'] }}" media="(min-width: 1536px)">
+                <source srcset="{{ image3.thumbnails['asset-500'] }}" media="(min-width: 1280px)">
+                <source srcset="{{ image3.thumbnails['asset-450'] }}" media="(min-width: 992px)">
+                <source srcset="{{ image3.thumbnails['asset-400'] }}" media="(min-width: 768px)">
+                <source srcset="{{ image3.thumbnails['asset-730'] }}" media="(min-width: 480px)">
+                <img src="{{ image3.thumbnails['asset-450'] }}" alt="" width="650" height="488" loading="lazy">
+            </picture>
+            {% if image3.credits|default %}
+                <figcaption>{{ image3.credits }}</figcaption>
+                </figure>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-form</key>
+    <meta>
+        <title lang="en">Form block</title>
+        <title lang="de">Formular Block</title>
+    </meta>
+    <properties>
+        <property name="form" type="single_form_selection">
+            <meta>
+                <title lang="de">Formular</title>
+                <title lang="en">Form</title>
+            </meta>
+
+            <params>
+                <param name="resourceKey" value="page"/>
+            </params>
+        </property>
+        <section name="success">
+            <meta>
+                <title lang="en">Notification of successful transmission</title>
+                <title lang="de">Anzeige bei erfolgreich versendet</title>
+            </meta>
+            <properties>
+                <block name="success_blocks" default-type="block--content-html" minOccurs="0">
+                    <meta>
+                        <title lang="en">Sub Blocks</title>
+                    </meta>
+                    <params>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--content-text"/>
+                        <type ref="block--content-html"/>
+                        <type ref="block--content-lead"/>
+                        <type ref="block--content-lead-html"/>
+                        <type ref="block--content-image"/>
+                        <type ref="block--content-button"/>
+                        <type ref="block--content-button-content"/>
+                        <type ref="block--content-button-multiline"/>
+                        <type ref="block--content-button-grid"/>
+                        <type ref="block--content-col-lead" />
+                        <type ref="block--content-col-lead-html" />
+                        <type ref="block--content-headline"/>
+                        <type ref="block--content-title"/>
+                        <type ref="block--content-list"/>
+
+                    </types>
+                </block>
+            </properties>
+        </section>
+
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <property name="floating_status" type="checkbox">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">Floating labels</title>
+                        <title lang="de">Schwebende Beschriftungen</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="false"/>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+        <section name="data-attribute">
+            <meta>
+                <title lang="en">Data-Attribute</title>
+                <title lang="de">Data-Attribute</title>
+            </meta>
+            <properties>
+                <property name="dataAttributes" type="block">
+
+                    <params>
+                        <param name="add_button_text">
+                            <meta>
+                                <title lang="en">Add data-attribut</title>
+                                <title lang="de">Data-Attribut hinzufügen</title>
+                            </meta>
+                        </param>
+                    </params>
+                    <types>
+                        <type name="attribute">
+                            <properties>
+                                <property name="name" type="text_line" colspan="6">
+                                    <meta>
+                                        <title lang="en">Name</title>
+                                        <title lang="de">Name (data-...)</title>
+                                    </meta>
+                                </property>
+                                <property name="value" type="text_line" colspan="6">
+                                    <meta>
+                                        <title lang="en">Value</title>
+                                        <title lang="de">Wert</title>
+                                    </meta>
+                                </property>
+                            </properties>
+                        </type>
+                    </types>
+                </property>
+            </properties>
+        </section>
+    </properties>
+
+</template>

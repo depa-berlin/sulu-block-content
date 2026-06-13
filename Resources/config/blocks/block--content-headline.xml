@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--content-headline</key>
+    <meta>
+        <title lang="en">Headline-Block</title>
+        <title lang="de">Überschrift-Block</title>
+    </meta>
+    <properties>
+        <section name="content1">
+        <meta>
+            <title lang="en">Textzeile 1</title>
+            <title lang="de">Textzeile 1</title>
+        </meta>
+        <properties>
+            <property name="text_1" type="text_area">
+                <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                <meta>
+                    <title lang="en">Text</title>
+                    <title lang="de">Text</title>
+                </meta>
+            </property>
+            <property name="icon_type" type="single_select" colspan="4">
+                <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                <meta>
+                    <title lang="en">Icon</title>
+                    <title lang="de">Icon</title>
+                </meta>
+                <params>
+                    <param name="default_value" value=""/>
+
+                    <param name="values" type="collection">
+                        <param name="">
+                            <meta>
+                                <title lang="en">none</title>
+                                <title lang="de">kein Icon</title>
+                            </meta>
+
+                        </param>
+                        <param name="logo">
+                            <meta>
+                                <title lang="en">logo</title>
+                                <title lang="de">Logo-Icon</title>
+                            </meta>
+
+                        </param>
+                        <param name="quotes">
+                            <meta>
+                                <title lang="en">quote</title>
+                                <title lang="de">Anführungszeichen</title>
+                            </meta>
+
+                        </param>
+                    </param>
+                </params>
+            </property>
+        </properties>
+        </section>
+
+    <section name="content2">
+    <meta>
+        <title lang="en">Textzeile 2</title>
+        <title lang="de">Textzeile 2</title>
+    </meta>
+    <properties>
+        <property name="text_2" type="text_area">
+            <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+            <meta>
+                <title lang="en">Text</title>
+                <title lang="de">Text</title>
+            </meta>
+        </property>
+    </properties>
+    </section>
+        <section name="config">
+            <meta>
+                <title lang="en">Config</title>
+                <title lang="de">Einstellungen</title>
+            </meta>
+            <properties>
+                <property name="element" type="single_select" colspan="4">
+                    <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+                    <meta>
+                        <title lang="en">HTML-Element</title>
+                        <title lang="de">HTML-Element</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="h1"/>
+
+                        <param name="values" type="collection">
+                            <param name="h1">
+                                <meta>
+                                    <title lang="en">H1</title>
+                                    <title lang="de">H1</title>
+                                </meta>
+
+                            </param>
+                            <param name="h2">
+                                <meta>
+                                    <title lang="en">H2</title>
+                                    <title lang="de">H2</title>
+                                </meta>
+
+                            </param>
+                            <param name="h3">
+                                <meta>
+                                    <title lang="en">H3</title>
+                                    <title lang="de">H3</title>
+                                </meta>
+
+                            </param>
+                            <param name="p">
+                                <meta>
+                                    <title lang="en">P</title>
+                                    <title lang="de">P</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</template>

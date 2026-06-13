@@ -1,0 +1,16 @@
+{% block content_button_grid %}
+    {% set block_id = content._id|default %}
+    {% set col_class = content.col_attr_class|default('') %}
+    <div class="block--content-button-grid {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% if content.blocks|default([]) %}
+            {% for block in content.blocks %}
+                <div class="{{ col_class }}">
+                    {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                        content: block,
+                        view: view.blocks[loop.index0],
+                    } %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

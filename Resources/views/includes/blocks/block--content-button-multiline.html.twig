@@ -1,0 +1,7 @@
+{% block content_button %}
+    {% set block_id = content._id|default %}
+    {% if content.link|default %}<a class="block--content-button-multiline {{ content.attr_class }}"
+                                    href="{{ content.link }}" target="{{ view.link.target }}"
+                                    data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>{{ content.button_text|nl2br }}
+        <span>{{ content.button_subtext|nl2br }}</span></a>{% endif %}
+{% endblock %}

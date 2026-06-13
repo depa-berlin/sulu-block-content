@@ -1,0 +1,10 @@
+{% block inline_svg %}
+    {% set block_id = content._id|default %}
+    {% if content.svg|default %}
+        <div class="block--content-inline-svg {{ content.attr_class|default('') }}"
+            {% if content.attr_id|default %} id="{{ content.attr_id }}"{% endif %}
+             data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+            {{ content.svg|raw }}
+        </div>
+    {% endif %}
+{% endblock %}

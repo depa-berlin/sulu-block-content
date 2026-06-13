@@ -1,0 +1,25 @@
+{% set layout_class = ' layout--' ~ content.layout|default('standard') %}
+{% set block_id = content._id|default %}
+{% set resolved_id = content.attr_id is not empty ? content.attr_id : block_id %}
+
+{% block content_accordion %}
+    <div id="{{ resolved_id }}" class="block--content-accordion{{ layout_class }} {{ content.attr_class|default }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% block content_accordion_inner %}
+            {% if content.blocks|default([]) %}
+                {% for block in content.blocks %}
+                    {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                        content: block,
+                        accordion_layout: content.layout|default('standard'),
+                        accordion_element: content.element|default('h3'),
+                        accordion_attr_id: resolved_id,
+                        accordion_always_open: content.always_open|default(false),
+                        first_item_open: content.first_item_open|default(false),
+                        view: view.blocks[loop.index0],
+                    } %}
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block script %}{% endblock %}

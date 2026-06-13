@@ -1,0 +1,15 @@
+{% block content_col_headline %}
+    {% set block_id = content._id|default %}
+    {% set el = content.element|default('h2') %}
+    <div class="block--content-col-headline {{ content.attr_class|default('') }}"
+         data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        <div class="{{ content.icon_type|default }}">
+            {% if content.text_2|default %}
+            <{{ el }}>{{ content.text_2|nl2br }}</{{ el }}>
+        {% endif %}
+        {% if content.text_1|default %}
+            <p class="overline">{{ content.text_1|nl2br }}</p>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}

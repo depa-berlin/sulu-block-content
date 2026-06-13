@@ -1,0 +1,4 @@
+block:
+    account_address:
+        no_address: 'Keine Adresse hinterlegt'
+        no_organisation: 'Snippet Webspace-Einstellung: keine Organisation definiert'

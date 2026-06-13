@@ -1,0 +1,13 @@
+{% block content_title %}
+    {% set block_id = content._id|default %}
+    {% set el = content.element|default('h2') %}
+    {% if content.text|default %}
+        <{{ el }} class="block--content-title {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}"
+        {{ include('includes/_partials/aria_attributes.html.twig', {
+            aria_blocks: content.aria_blocks|default([])
+        }) }}
+        {{ sulu_block_preview(content) }}>
+        {{ content.text|nl2br }}
+        </{{ el }}>
+    {% endif %}
+{% endblock %}

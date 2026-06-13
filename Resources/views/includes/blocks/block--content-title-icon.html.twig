@@ -1,0 +1,42 @@
+{% set image = sulu_resolve_media(content.icon, app.request.locale) %}
+{% set block_id = content._id|default %}
+{% set loading = content.loading %}
+{% set fetchpriority = null %}
+{% if content.fetchpriority_high == true %}
+    {% set loading = "eager" %}
+    {% set fetchpriority = "high" %}
+{% endif %}
+{% set is_preview = '/_sulu_preview' in app.request.pathinfo %}
+{% set el = content.element|default('h2') %}
+
+{% block content_title_icon %}
+    {# 1. Fehleranzeige im Preview-Modus #}
+    {% if is_preview %}
+        {% if image is not empty and image.mimeType != 'image/svg+xml' %}
+            <div class="alert alert-danger" role="alert" {{ sulu_block_preview(content) }}>
+                {% if app.request.locale == 'de' %}
+                    <strong>Fehlerhafte SVG-Datei</strong>
+                    <div>Das verwendete Bild ist keine SVG-Datei.</div>
+                {% else %}
+                    <strong>Incorrect SVG file</strong>
+                    <div>The image used is not an SVG file.</div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if content.text|default %}
+        <{{ el }} class="block--content-title-icon {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}"
+        {{ include('includes/_partials/aria_attributes.html.twig', {
+            aria_blocks: content.aria_blocks|default([])
+        }) }}
+        >
+        {% if image is not empty and image.mimeType == 'image/svg+xml' %}
+            <img src="{{ sulu_get_media_url(image, 'inline') }}" class="img-fluid"
+                 alt="{{ content.is_decorative ? '' : image.title }}" {% if image.description %}title="{{ image.description }}"{% endif %}
+                 loading="{{ loading }}" {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"
+                 {% endif %}width="{{ image.properties.width }}" height="{{ image.properties.height }}">
+        {% endif %}
+        {{ content.text|nl2br }}
+        </{{ el }}>
+    {% endif %}
+{% endblock %}
