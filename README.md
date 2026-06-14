@@ -41,7 +41,7 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 - PHP 8.2+
 - Symfony 7.0+
 - Sulu CMS 3.0+
-- `depa-berlin/sulu-block-fragments`
+- `depa-berlin/sulu-block-helper`
 
 ## Installation
 
@@ -52,7 +52,7 @@ composer require depa-berlin/sulu-block-content
 Register in `config/bundles.php`:
 
 ```php
-Depa\SuluBlockFragmentsBundle\SuluBlockFragmentsBundle::class => ['all' => true],
+Depa\SuluBlockHelperBundle\SuluBlockHelperBundle::class => ['all' => true],
 Depa\SuluBlockContentBundle\SuluBlockContentBundle::class => ['all' => true],
 ```
 
