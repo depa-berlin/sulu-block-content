@@ -1,0 +1,39 @@
+section:
+    - block--content-box
+    - block--content-headline
+    - block--content-title
+    - block--content-text
+    - block--content-html
+    - block--content-html-template
+    - block--content-lead
+    - block--content-lead-html
+    - block--content-video
+    - block--content-image
+    - block--content-inline-svg
+    - block--content-col-lead
+    - block--content-col-headline
+    - block--content-button-grid
+    - block--content-list
+    - block--content-form
+    - block--content-accordion
+    - block--content-snippet
+    - block--content-action-button
+
+container:
+    - block--content-text
+    - block--content-html
+    - block--content-lead
+    - block--content-lead-html
+    - block--content-image
+    - block--content-inline-svg
+    - block--content-video
+    - block--content-button
+    - block--content-button-content
+    - block--content-button-multiline
+    - block--content-button-grid
+    - block--content-col-lead
+    - block--content-col-lead-html
+    - block--content-col-headline
+    - block--content-headline
+    - block--content-title
+    - block--content-form
