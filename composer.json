@@ -1,12 +1,12 @@
 {
-    "name": "depa-berlin/sulu-block-content",
+    "name": "depa/sulu-block-content",
     "description": "Content block collection for Sulu CMS (text, image, button, accordion, and more)",
     "type": "symfony-bundle",
     "license": "proprietary",
     "require": {
         "php": "^8.2",
         "symfony/framework-bundle": "^7.0",
-        "depa-berlin/sulu-block-helper": "@dev"
+        "depa/sulu-block-helper": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.0",
