@@ -41,12 +41,12 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 - PHP 8.2+
 - Symfony 7.0+
 - Sulu CMS 3.0+
-- `depa-berlin/sulu-block-helper`
+- `depa/sulu-block-helper`
 
 ## Installation
 
 ```bash
-composer require depa-berlin/sulu-block-content
+composer require depa/sulu-block-content
 ```
 
 Register in `config/bundles.php`:
