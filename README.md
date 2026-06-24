@@ -49,7 +49,12 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 composer require depa/sulu-block-content
 ```
 
-Register in `config/bundles.php`:
+If your project uses **Symfony Flex** (the default in the Sulu/Symfony
+skeleton), both bundles are registered in `config/bundles.php` automatically —
+skip the next step. Adding them manually on top would create a duplicate
+registration.
+
+Without Symfony Flex, register both bundles manually in `config/bundles.php`:
 
 ```php
 Depa\SuluBlockHelperBundle\SuluBlockHelperBundle::class => ['all' => true],
