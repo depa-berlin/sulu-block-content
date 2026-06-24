@@ -168,7 +168,7 @@
                         <param name="block_id_generator" value="true"/>
                     </params>
                     <types>
-                        <type ref="aria-block--heading"/>
+                        <type ref="aria-attr--heading"/>
                         <type ref="aria-attr--aria-label"/>
                     </types>
                 </block>

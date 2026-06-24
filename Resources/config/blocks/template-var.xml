@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>template-var</key>
+    <meta>
+        <title lang="en">Template variable</title>
+        <title lang="de">Template-Variable</title>
+    </meta>
+    <properties>
+        <property name="variable" type="text_line" mandatory="true">
+            <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+            <meta>
+                <title lang="en">Variable</title>
+                <title lang="de">Variable</title>
+                <info_text lang="en"></info_text>
+                <info_text lang="de"></info_text>
+            </meta>
+            <params>
+                <param name="min_length" value="3" />
+                <param name="pattern" value="^[a-zA-Z0-9_]+$"/>
+                <param name="pattern_message" value="Only letters, numbers and underscores allowed."/>
+            </params>
+        </property>
+        <property name="content" type="text_area" mandatory="true">
+            <!-- @see https://docs.sulu.io/en/2.2/book/extend-admin.html#selection-field-type -->
+            <meta>
+                <title lang="en">Content</title>
+                <title lang="de">Inhalt</title>
+                <info_text lang="en">The content replaces the template variable in the template above</info_text>
+                <info_text lang="de">Der Inhalt ersetzt die Template-Variable im obigen Template</info_text>
+            </meta>
+            <params>
+                <param name="min_length" value="5" />
+            </params>
+        </property>
+
+    </properties>
+</template>
