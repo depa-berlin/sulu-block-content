@@ -61,6 +61,26 @@ Depa\SuluBlockHelperBundle\SuluBlockHelperBundle::class => ['all' => true],
 Depa\SuluBlockContentBundle\SuluBlockContentBundle::class => ['all' => true],
 ```
 
+### Optional: `block--content-form`
+
+This one block additionally requires **`sulu/form-bundle`** (it provides the
+`single_form_selection` field type and the `sulu_form_build()` Twig function
+used by this block only — no other block needs it):
+
+```bash
+composer require sulu/form-bundle
+```
+
+Without it, this specific block fails: the field type is unknown in the admin
+and rendering the block throws `Unknown "sulu_form_build" function`.
+
+By default the block renders with SuluFormBundle's own theme
+(`@SuluForm/themes/basic.html.twig`), so it works out of the box once the
+bundle above is installed. If you enable the block's "Floating labels" option,
+you must also supply your own `templates/form/floating-theme.html.twig` in
+the consuming project — this is a project-specific design variant that is not
+shipped by either bundle.
+
 ## License
 
 Proprietary — Copyright (c) depa Berlin GmbH & Co. KG. All rights reserved.

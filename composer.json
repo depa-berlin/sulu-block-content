@@ -13,6 +13,9 @@
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-symfony": "^2.0"
     },
+    "suggest": {
+        "sulu/form-bundle": "Required to use the block--content-form block (provides the single_form_selection field type and the sulu_form_build() Twig function)"
+    },
     "repositories": [
         {
             "type": "vcs",
