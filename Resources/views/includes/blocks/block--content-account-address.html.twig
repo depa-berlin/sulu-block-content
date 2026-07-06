@@ -1,5 +1,6 @@
 {% block content_account_address %}
     {% set block_id = content._id|default %}
+    {% set account = content.account|default %}
     <div class="block--content-account-address" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
         {% if account %}
             {% if account.accountAddresses is not empty and account.accountAddresses|length > 0 %}
