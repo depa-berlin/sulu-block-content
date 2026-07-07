@@ -6,6 +6,7 @@
     "require": {
         "php": "^8.2",
         "symfony/framework-bundle": "^7.0",
+        "sulu/sulu": "~3.0",
         "depa/sulu-block-helper": "@dev"
     },
     "require-dev": {
