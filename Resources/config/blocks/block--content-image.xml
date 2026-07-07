@@ -92,16 +92,6 @@
                         </param>
                     </params>
                 </property>
-                <property name="enable_x2" type="checkbox">
-                    <meta>
-                        <title lang="en">Enable Retina/2x images</title>
-                        <title lang="de">Retina/2x Bilder aktivieren</title>
-                    </meta>
-                    <params>
-                        <param name="type" value="toggler"/>
-                        <param name="default_value" value="false"/>
-                    </params>
-                </property>
             </properties>
         </section>
         <xi:include href="../_fragments/config_image.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)

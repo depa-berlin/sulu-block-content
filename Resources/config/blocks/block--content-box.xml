@@ -46,7 +46,6 @@
                         <type ref="block--content-button-content"/>
                         <type ref="block--content-button-multiline"/>
                         <type ref="block--content-button-grid"/>
-                        <type ref="block--content-col-lead" />
                         <type ref="block--content-col-lead-html" />
                         <type ref="block--content-headline"/>
                         <type ref="block--content-title"/>
