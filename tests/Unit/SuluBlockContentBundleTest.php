@@ -2,32 +2,37 @@
 
 declare(strict_types=1);
 
-namespace Depa\SuluBlockContentBundle\Tests\Unit\DependencyInjection;
+namespace Depa\SuluBlockContentBundle\Tests\Unit;
 
-use Depa\SuluBlockContentBundle\DependencyInjection\SuluBlockContentExtension;
+use Depa\SuluBlockContentBundle\SuluBlockContentBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class SuluBlockContentExtensionTest extends TestCase
+class SuluBlockContentBundleTest extends TestCase
 {
     private ContainerBuilder $container;
-    private SuluBlockContentExtension $extension;
+    private SuluBlockContentBundle $bundle;
 
     protected function setUp(): void
     {
         $this->container = new ContainerBuilder();
-        $this->extension = new SuluBlockContentExtension();
+        $this->bundle = new SuluBlockContentBundle();
+    }
+
+    private function load(): void
+    {
+        $this->bundle->getContainerExtension()->load([], $this->container);
     }
 
     public function testLoadSetsBundleMetadataParameter(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         self::assertTrue($this->container->hasParameter('sulu_block_content.bundle_metadata'));
     }
 
     public function testBundleMetadataHasRequiredKeys(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
         self::assertArrayHasKey('bundle', $meta);
@@ -38,7 +43,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testBundleMetadataContainsCorrectBundleName(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
         self::assertSame('SuluBlockContentBundle', $meta['bundle']);
@@ -46,7 +51,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testBundleMetadataContainsCorrectPackageName(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
         self::assertSame('depa/sulu-block-content', $meta['package']);
@@ -54,7 +59,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testBundleMetadataContainsAtLeastOneBlock(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
         self::assertNotEmpty($meta['blocks']);
@@ -62,7 +67,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testBlocksAreSortedAndUnique(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
         $blocks = $meta['blocks'];
@@ -74,7 +79,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testKnownContentBlocksArePresent(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
@@ -85,7 +90,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testAccordionHasChildrenFromXml(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
@@ -95,7 +100,7 @@ class SuluBlockContentExtensionTest extends TestCase
 
     public function testChildrenValuesAreArraysOfStrings(): void
     {
-        $this->extension->load([], $this->container);
+        $this->load();
         $meta = $this->container->getParameter('sulu_block_content.bundle_metadata');
         self::assertIsArray($meta);
 
