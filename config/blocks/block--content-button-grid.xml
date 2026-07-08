@@ -36,6 +36,12 @@
             <properties>
                 <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
                       xpointer(/sulu:properties/*)"/>
+                <property name="col_attr_class" type="config_line">
+                    <meta>
+                        <title lang="en">CSS classes (column)</title>
+                        <title lang="de">CSS Klassen (Spalte)</title>
+                    </meta>
+                </property>
             </properties>
         </section>
     </properties>
