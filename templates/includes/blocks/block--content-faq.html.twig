@@ -22,7 +22,7 @@
         "@type": "Answer",
         "text": "{{ faq.body|json_encode|slice(1, -1)|raw }}"
       }
-    }{% if not loop.last %}{% endif %}
+    }{% if not loop.last %},{% endif %}
         {% endfor %}
         ]
       }
